@@ -1,0 +1,35 @@
+PODS:
+  - Flutter (1.0.0)
+  - path_provider (0.0.1):
+    - Flutter
+  - true_time (0.0.1):
+    - Flutter
+    - TrueTime
+  - TrueTime (5.0.2)
+
+DEPENDENCIES:
+  - Flutter (from `.symlinks/flutter/ios`)
+  - path_provider (from `.symlinks/plugins/path_provider/ios`)
+  - true_time (from `.symlinks/plugins/true_time/ios`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - TrueTime
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: ".symlinks/flutter/ios"
+  path_provider:
+    :path: ".symlinks/plugins/path_provider/ios"
+  true_time:
+    :path: ".symlinks/plugins/true_time/ios"
+
+SPEC CHECKSUMS:
+  Flutter: 58dd7d1b27887414a370fcccb9e645c08ffd7a6a
+  path_provider: f96fff6166a8867510d2c25fdcc346327cc4b259
+  true_time: 4540a43cc9b123bf3daa1dc81456a70c4634b88e
+  TrueTime: 511713bd50e53c70f454689aa67031dcd1e6c17f
+
+PODFILE CHECKSUM: ebd43b443038e611b86ede96e613bd6033c49497
+
+COCOAPODS: 1.7.0

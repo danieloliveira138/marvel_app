@@ -1,0 +1,6 @@
+{
+    "base_url" : "https://gateway.marvel.com/",
+    "public_key" : "37b1ceedbda6637602a31f9ac3fccd0a",
+    "private_key" : "4b068773aefe3bf95298d319a29d06234ac2b79d",
+    "pagin_size" : 10
+}
