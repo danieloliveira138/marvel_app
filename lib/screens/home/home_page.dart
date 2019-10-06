@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:marvel_app/modules/app_module.dart';
 import 'package:marvel_app/widgets/characters_card.dart';
 import 'package:marvel_app/models/results.dart';
+import 'package:marvel_app/widgets/progress_view.dart';
 import 'home_bloc.dart';
 
 class HomePage extends StatefulWidget {
@@ -50,7 +51,7 @@ class _HomePageState extends State<HomePage> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           if (snapshot.data) {
-            return Center(child: CircularProgressIndicator());
+            return ProgressView();
           }
         }
 
