@@ -30,7 +30,8 @@ dependencies:
   hydrated_bloc: ^0.6.0
   # flutterando bloc lib
   bloc_pattern:
-
+  # transparent image for Placeholder
+  transparent_image: ^1.0.0
   # Custom progress bar
   flutter_spinkit: ^3.1.0
 
@@ -58,6 +59,7 @@ flutter:
   assets:
 
     - lib/assets/api/api_keys.json
+    - lib/assets/images/marvel-logo.jpg
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

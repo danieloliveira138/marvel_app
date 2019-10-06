@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marvel_app/modules/app_module.dart';
 import 'package:marvel_app/widgets/characters_card.dart';
+import 'package:marvel_app/widgets/characters_card_grid.dart';
 import 'package:marvel_app/models/results.dart';
 import 'package:marvel_app/widgets/progress_view.dart';
 import 'home_bloc.dart';
@@ -32,6 +33,18 @@ class _HomePageState extends State<HomePage> {
     return AppBar(
       title: Text('Marvel App'),
       elevation: 8,
+      actions: <Widget>[
+        IconButton(
+          icon: Icon(Icons.crop_square),
+          color: Colors.white,
+          onPressed: () => AppModule.to.bloc<HomeBloc>().singleCount(),
+        ),
+        IconButton(
+          icon: Icon(Icons.grid_on),
+          color: Colors.white,
+          onPressed: () => AppModule.to.bloc<HomeBloc>().doubleCount(),
+        )
+      ],
     );
   }
 
@@ -54,38 +67,46 @@ class _HomePageState extends State<HomePage> {
             return ProgressView();
           }
         }
-
         return Container();
       },
     );
   }
 
   _listCharacters() {
-    return StreamBuilder(
+    return StreamBuilder<List<Results>>(
         stream: AppModule.to.bloc<HomeBloc>().characters,
         builder: (context, snapshot) {
-
           if (snapshot.hasError) {
             return Center(
               child: Text('Error to load data'),
             );
           }
 
-          List<Results> list = List<Results>();
+          if (!snapshot.hasData) {
+            return Container();
+          }
 
           if (snapshot.hasData) {
-            list.addAll(snapshot.data);
-
-            return ListView.builder(
-              addAutomaticKeepAlives: true,
-              itemCount: list.length,
-              controller: _scrollController,
-              itemBuilder: (context, index) {
-                return CharactersCard(snapshot.data[index]);
-              });
+            return GridView.builder(
+                itemCount: snapshot.data.length,
+                controller: _scrollController,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: AppModule.to.bloc<HomeBloc>().gridCount),
+                itemBuilder: (context, index) {
+                  switch (AppModule.to.bloc<HomeBloc>().gridCount) {
+                    case 1:
+                      return CharactersCard(
+                        snapshot.data[index],
+                      );
+                    case 2:
+                      return CharactersCard(
+                        snapshot.data[index],
+                        fontSize: 16,
+                      );
+                  }
+                });
           }
-        }
-    );
+        });
   }
 
   void _scrollEvent() {
@@ -93,7 +114,7 @@ class _HomePageState extends State<HomePage> {
         _scrollController.position.maxScrollExtent) {
       AppModule.to
           .bloc<HomeBloc>()
-          .getCharacters(AppModule.to.bloc<HomeBloc>().charactersLenght);
+          .getCharacters(AppModule.to.bloc<HomeBloc>().listLength);
     }
   }
 

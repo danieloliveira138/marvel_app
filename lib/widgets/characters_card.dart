@@ -1,40 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:marvel_app/models/results.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 // ignore: must_be_immutable
 class CharactersCard extends StatelessWidget {
   Results _character;
-
-  CharactersCard(this._character);
+  double fontSize;
+  CharactersCard(this._character, {this.fontSize});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(16)),
-        ),
-        margin: EdgeInsets.all(16),
-        elevation: 4,
-        child: Column(
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      elevation: 4,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: Stack(
+          fit: StackFit.loose,
+          alignment: Alignment.bottomLeft,
           children: <Widget>[
             Container(
               width: double.infinity,
-              child: Image.network(
-                  '${_character.thumbnail.path}/landscape_large.${_character.thumbnail.extension}',
-                  fit: BoxFit.fitWidth,
-                )
+              height: double.infinity,
+              child: FadeInImage.memoryNetwork(
+                placeholder: kTransparentImage,
+                image: '${_character.thumbnail.path}/landscape_large.${_character.thumbnail.extension}',
+                fit: BoxFit.fill,
+                ),
             ),
             Container(
-              margin: EdgeInsets.all(16),
-              child: Text(
-                _character.name,
-                style: TextStyle(
-                    fontSize: 32,
-
-                  )
+                width: double.infinity,
+                color: Colors.black45,
+                padding: EdgeInsets.all(8),
+                child: Text(
+                  _character.name,
+                  style: TextStyle(
+                    fontSize: fontSize ?? 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
-            )
+              ),
           ],
         ),
       ),
