@@ -81,7 +81,7 @@ class _HomePageState extends State<HomePage> {
               itemCount: list.length,
               controller: _scrollController,
               itemBuilder: (context, index) {
-                return CharactersCard(snapshot.data[index].thumbnail);
+                return CharactersCard(snapshot.data[index]);
               });
           }
         }
