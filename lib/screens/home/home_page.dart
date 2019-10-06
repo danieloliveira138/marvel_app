@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marvel_app/modules/app_module.dart';
 import 'package:marvel_app/widgets/characters_card.dart';
-import 'package:marvel_app/widgets/progress_card.dart';
 import 'package:marvel_app/models/results.dart';
 import 'home_bloc.dart';
 
@@ -36,6 +35,31 @@ class _HomePageState extends State<HomePage> {
   }
 
   _body() {
+    return Stack(
+      children: <Widget>[
+        _listCharacters(),
+        _progressIndicator(),
+      ],
+    );
+  }
+
+  _progressIndicator() {
+    return StreamBuilder(
+      stream: AppModule.to.bloc<HomeBloc>().loading,
+      initialData: true,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          if (snapshot.data) {
+            return Center(child: CircularProgressIndicator());
+          }
+        }
+
+        return Container();
+      },
+    );
+  }
+
+  _listCharacters() {
     return StreamBuilder(
         stream: AppModule.to.bloc<HomeBloc>().characters,
         builder: (context, snapshot) {
@@ -53,19 +77,14 @@ class _HomePageState extends State<HomePage> {
 
             return ListView.builder(
               addAutomaticKeepAlives: true,
-              itemCount: list.length + 1,
+              itemCount: list.length,
               controller: _scrollController,
               itemBuilder: (context, index) {
-                if (index == list.length) {
-                  return ProgressCard();
-                } else {
-                  return CharactersCard(snapshot.data[index].thumbnail);
-                }
-              }
-            );
+                return CharactersCard(snapshot.data[index].thumbnail);
+              });
           }
         }
-      );
+    );
   }
 
   void _scrollEvent() {

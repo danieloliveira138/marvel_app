@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marvel_app/models/thumbnail.dart';
 
+// ignore: must_be_immutable
 class CharactersCard extends StatelessWidget {
   Thumbnail thumbnail;
 
