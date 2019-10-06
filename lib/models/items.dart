@@ -1,4 +1,3 @@
-
 class Items {
   String resourceURI;
   String name;

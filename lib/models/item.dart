@@ -1,14 +1,14 @@
 import 'package:marvel_app/models/items.dart';
 
-class Comics {
+class Item {
   int available;
   String collectionURI;
   List<Items> items;
   int returned;
 
-  Comics({this.available, this.collectionURI, this.items, this.returned});
+  Item({this.available, this.collectionURI, this.items, this.returned});
 
-  Comics.fromJson(Map<String, dynamic> json) {
+  Item.fromJson(Map<String, dynamic> json) {
     available = json['available'];
     collectionURI = json['collectionURI'];
     if (json['items'] != null) {

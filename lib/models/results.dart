@@ -1,4 +1,4 @@
-import 'package:marvel_app/models/comics.dart';
+import 'package:marvel_app/models/item.dart';
 import 'package:marvel_app/models/thumbnail.dart';
 import 'package:marvel_app/models/urls.dart';
 
@@ -9,10 +9,10 @@ class Results {
   String modified;
   Thumbnail thumbnail;
   String resourceURI;
-  Comics comics;
-  String series;
-  String stories;
-  String events;
+  Item comics;
+  Item series;
+  Item stories;
+  Item events;
   List<Urls> urls;
 
   Results(
@@ -38,13 +38,13 @@ class Results {
         : null;
     resourceURI = json['resourceURI'];
     comics =
-        json['comics'] != null ? new Comics.fromJson(json['comics']) : null;
-    // series =
-    //     json['series'] != null ? new Series.fromJson(json['series']) : null;
-    // stories =
-    //     json['stories'] != null ? new Stories.fromJson(json['stories']) : null;
-    // events =
-    //     json['events'] != null ? new Events.fromJson(json['events']) : null;
+        json['comics'] != null ? new Item.fromJson(json['comics']) : null;
+     series =
+         json['series'] != null ? new Item.fromJson(json['series']) : null;
+     stories =
+         json['stories'] != null ? new Item.fromJson(json['stories']) : null;
+     events =
+         json['events'] != null ? new Item.fromJson(json['events']) : null;
     if (json['urls'] != null) {
       urls = new List<Urls>();
       json['urls'].forEach((v) {
@@ -66,15 +66,15 @@ class Results {
     if (this.comics != null) {
       data['comics'] = this.comics.toJson();
     }
-    // if (this.series != null) {
-    //   data['series'] = this.series.toJson();
-    // }
-    // if (this.stories != null) {
-    //   data['stories'] = this.stories.toJson();
-    // }
-    // if (this.events != null) {
-    //   data['events'] = this.events.toJson();
-    // }
+     if (this.series != null) {
+       data['series'] = this.series.toJson();
+     }
+     if (this.stories != null) {
+       data['stories'] = this.stories.toJson();
+     }
+     if (this.events != null) {
+       data['events'] = this.events.toJson();
+     }
     if (this.urls != null) {
       data['urls'] = this.urls.map((v) => v.toJson()).toList();
     }
