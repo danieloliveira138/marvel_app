@@ -5,7 +5,7 @@ import 'package:transparent_image/transparent_image.dart';
 // ignore: must_be_immutable
 class CharacterListTile extends StatelessWidget {
   Results _character;
-  CharacterListTile(this._character);
+  CharacterListTile(this._character,);
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +38,7 @@ class CharacterListTile extends StatelessWidget {
               Container(
                 child: IconButton(
                   icon: Icon(Icons.more_vert),
-                  onPressed: () {
-                    print('Prinet');
-                  },
+                  onPressed: () {},
                 ),
               )
             ],
@@ -49,4 +47,5 @@ class CharacterListTile extends StatelessWidget {
       ),
     );
   }
+
 }

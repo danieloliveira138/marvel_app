@@ -21,6 +21,18 @@ class MarvelApi {
     
     headers = marvelParams.hearders;
     uri = Uri.https(base_url, api, marvelParams.params);
+    print(uri.toString());
+  }
+
+  MarvelApi.singleRequest(String url) {
+    String requestUrl = url.replaceAll('http:', '');
+    requestUrl = requestUrl.replaceAll('//', '');
+    requestUrl = requestUrl.replaceAll(base_url, '');
+    print(requestUrl);
+    final marvelParams = createMarvelApi();
+    headers = marvelParams.hearders;
+    uri = Uri.http(base_url,requestUrl ,marvelParams.params);
+    print(uri.toString());
 
   }
 

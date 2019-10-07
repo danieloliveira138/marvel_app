@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:marvel_app/models/items.dart';
 import 'package:marvel_app/models/list_label.dart';
 import 'package:marvel_app/models/results.dart';
+import 'package:marvel_app/modules/detail_module.dart';
+import 'package:marvel_app/screens/detail/detail_bloc.dart';
 import 'package:marvel_app/widgets/title_listtile.dart';
 
 class CharacterItemsList extends StatelessWidget {
   Results character;
-  CharacterItemsList(this.character);
+  Function function;
+  CharacterItemsList(this.character, {this.function});
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +33,7 @@ class CharacterItemsList extends StatelessWidget {
           return CustomListTile(
             items: items[index],
             label: firstLabel.label,
+            function: () => func(items[index].resourceURI),
           );
         }
 
@@ -37,6 +41,7 @@ class CharacterItemsList extends StatelessWidget {
           return CustomListTile(
             items: items[index],
             label: secondLabel.label,
+            function: () => func(items[index].resourceURI),
           );
         }
 
@@ -44,6 +49,7 @@ class CharacterItemsList extends StatelessWidget {
           return CustomListTile(
             items: items[index],
             label: thirdLabel.label,
+            function: () => func(items[index].resourceURI),
           );
         }
 
@@ -51,6 +57,7 @@ class CharacterItemsList extends StatelessWidget {
           return CustomListTile(
             items: items[index],
             label: fourthLabel.label,
+            function: () => func(items[index].resourceURI),
           );
         }
 
@@ -64,11 +71,14 @@ class CharacterItemsList extends StatelessWidget {
                 decorationStyle: TextDecorationStyle.solid
             ),
           ),
-          onTap: () {
-
-          },
+          onTap: () => func(items[index].resourceURI),
         );
       },
     );
   }
+
+  func(url) {
+    DetailModule.to.bloc<DetailBloc>().toNextPage(url);
+  }
+
 }

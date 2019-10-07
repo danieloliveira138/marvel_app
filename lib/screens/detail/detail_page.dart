@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:marvel_app/models/results.dart';
+import 'package:marvel_app/modules/detail_module.dart';
 import 'package:marvel_app/widgets/character_items_list.dart';
+import 'package:marvel_app/widgets/progress_view.dart';
+
+import 'detail_bloc.dart';
 
 // ignore: must_be_immutable
 class DetailPage extends StatefulWidget {
@@ -44,8 +48,15 @@ class _DetailPageState extends State<DetailPage> {
             )
           ];
         },
-        body: CharacterItemsList(widget.character),
-        );
+        body: Stack(
+          children: <Widget>[
+            CharacterItemsList(
+              widget.character
+            ),
+            ProgressStreamBuilder(
+              DetailModule.to.bloc<DetailBloc>().progress,
+            ),
+          ],
+        ));
   }
-
 }

@@ -4,7 +4,8 @@ import 'package:marvel_app/models/items.dart';
 class CustomListTile extends StatelessWidget {
   Items items;
   String label;
-  CustomListTile({this.items, this.label});
+  Function function;
+  CustomListTile({this.items, this.label, this.function});
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +25,7 @@ class CustomListTile extends StatelessWidget {
             ListTile(
               title: Text(items.name),
               subtitle: Text(items.resourceURI),
-              onTap: () {
-
-              },
+              onTap: () => function,
             )
           ],
         ),

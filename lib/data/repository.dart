@@ -11,4 +11,8 @@ class Repository {
     return await MarvelApi(limit: 10, offset: offset).fetch(_client);
   }
 
+  Future<ServerResponse> singleRequest(String url) async {
+    return await MarvelApi.singleRequest(url).fetch(_client);
+  }
+
 }

@@ -52,23 +52,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return Stack(
       children: <Widget>[
         _listCharacters(),
-        _progressIndicator(),
+        ProgressStreamBuilder(
+          AppModule.to.bloc<HomeBloc>().loading,
+        ),
       ],
-    );
-  }
-
-  _progressIndicator() {
-    return StreamBuilder(
-      stream: AppModule.to.bloc<HomeBloc>().loading,
-      initialData: true,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          if (snapshot.data) {
-            return ProgressView();
-          }
-        }
-        return Container();
-      },
     );
   }
 
