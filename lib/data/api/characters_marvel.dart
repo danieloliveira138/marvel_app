@@ -7,7 +7,6 @@ import 'package:marvel_app/data/utils/api_utils.dart';
 import 'package:marvel_app/data/utils/constants.dart';
 
 class MarvelApi {
-
   int limit;
   int offset;
   String id;

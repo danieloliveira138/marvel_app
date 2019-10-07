@@ -28,7 +28,7 @@ class CharactersCard extends StatelessWidget {
               Container(
                 width: double.infinity,
                 height: double.infinity,
-                child: ImageMarvel(
+                child: ImageMarvel.landscapeLarge(
                   _character.thumbnail,
                   fit: BoxFit.fill,
                 ),

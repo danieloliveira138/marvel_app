@@ -8,6 +8,7 @@ class Results {
   String description;
   String modified;
   Thumbnail thumbnail;
+  List<Thumbnail> images;
   String resourceURI;
   Item comics;
   Item series;
@@ -21,6 +22,7 @@ class Results {
       this.description,
       this.modified,
       this.thumbnail,
+      this.images,
       this.resourceURI,
       this.comics,
       this.series,
@@ -48,7 +50,13 @@ class Results {
     if (json['urls'] != null) {
       urls = new List<Urls>();
       json['urls'].forEach((v) {
-        urls.add(new Urls.fromJson(v));
+        urls.add(Urls.fromJson(v));
+      });
+    }
+    if (json['images'] != null) {
+      images = new List<Thumbnail>();
+      json['images'].forEach((v) {
+        images.add(Thumbnail.fromJson(v));
       });
     }
   }

@@ -15,7 +15,7 @@ class CharactersCardGrid extends StatelessWidget {
         fit: StackFit.expand,
         alignment: Alignment.bottomLeft,
         children: <Widget>[
-          ImageMarvel(
+          ImageMarvel.landscapeLarge(
             _character.thumbnail,
             fit: BoxFit.cover,
           ),

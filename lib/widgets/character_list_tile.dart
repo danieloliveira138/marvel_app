@@ -17,7 +17,7 @@ class CharacterListTile extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 flex: 1,
-                child: ImageMarvel(
+                child: ImageMarvel.landscapeLarge(
                   _character.thumbnail,
                   width: 100,
                   fit: BoxFit.fitHeight,

@@ -1,7 +1,5 @@
 import 'dart:async';
-import 'package:marvel_app/models/data_response.dart';
 import 'package:marvel_app/models/results.dart';
-import 'package:marvel_app/utils/nav.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:marvel_app/data/repository.dart';
 import 'package:marvel_app/models/api_response.dart';
