@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Marvel App',
           theme: ThemeData(
-            primarySwatch: Colors.blue,
-            brightness: snapshot.data ? Brightness.dark : Brightness.light
+            primarySwatch: Colors.red,
+            brightness: snapshot.data ? Brightness.dark : Brightness.light,
           ),
           home: HomePage(),
         );

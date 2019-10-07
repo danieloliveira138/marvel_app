@@ -5,7 +5,6 @@ import 'package:marvel_app/screens/content/content_page.dart';
 import 'package:marvel_app/utils/nav.dart';
 import 'package:marvel_app/widgets/character_items_list.dart';
 import 'package:marvel_app/widgets/progress_view.dart';
-
 import 'detail_bloc.dart';
 
 // ignore: must_be_immutable
@@ -64,13 +63,18 @@ class _DetailPageState extends State<DetailPage> {
 
   @override
   void initState() {
+    super.initState();
+    contentPageStream();
+  }
+
+  void contentPageStream() {
     DetailModule.to.bloc<DetailBloc>().content.listen((data) {
 
       Widget contentPage = ContentPage(data);
+
       nav(context, contentPage);
 
     });
-    super.initState();
   }
 
 }

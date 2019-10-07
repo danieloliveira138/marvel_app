@@ -3,6 +3,7 @@ import 'package:marvel_app/modules/app_module.dart';
 import 'package:marvel_app/widgets/characters_card.dart';
 import 'package:marvel_app/models/results.dart';
 import 'package:marvel_app/widgets/progress_view.dart';
+import '../../main_bloc.dart';
 import 'home_bloc.dart';
 
 class HomePage extends StatefulWidget {
@@ -43,6 +44,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             progress: _iconAnimation,
           ),
           onPressed: _handleAnimatedIconPressed,
+        ),
+        IconButton(
+          icon: Icon(
+            Icons.brightness_high,
+          ),
+          onPressed: () => AppModule.to.bloc<MainBloc>().changeTheme(),
         ),
       ],
     );
