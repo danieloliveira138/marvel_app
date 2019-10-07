@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marvel_app/widgets/progress_bar.dart';
 
 // ignore: must_be_immutable
 class ProgressStreamBuilder extends StatefulWidget {
@@ -38,7 +39,7 @@ class ProgressView extends StatelessWidget {
           child: Container(
             color: Colors.black45,
             child: Center(
-              child: CircularProgressIndicator(),
+              child: CircleProgressBar(),
             ),
           ),
         )

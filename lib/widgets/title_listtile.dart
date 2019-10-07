@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marvel_app/models/items.dart';
 
+// ignore: must_be_immutable
 class CustomListTile extends StatelessWidget {
   Items items;
   String label;

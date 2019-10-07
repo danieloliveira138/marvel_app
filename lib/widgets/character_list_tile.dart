@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marvel_app/models/results.dart';
-import 'package:transparent_image/transparent_image.dart';
-
+import 'package:marvel_app/widgets/image_placeholder.dart';
 // ignore: must_be_immutable
 class CharacterListTile extends StatelessWidget {
   Results _character;
@@ -18,10 +17,9 @@ class CharacterListTile extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 flex: 1,
-                child: FadeInImage.memoryNetwork(
+                child: ImageMarvel(
+                  _character.thumbnail,
                   width: 100,
-                  placeholder: kTransparentImage,
-                  image: '${_character.thumbnail.path}/landscape_large.${_character.thumbnail.extension}',
                   fit: BoxFit.fitHeight,
                 ),
               ),

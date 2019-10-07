@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:marvel_app/models/results.dart';
 import 'package:marvel_app/modules/detail_module.dart';
-import 'package:transparent_image/transparent_image.dart';
+import 'package:marvel_app/widgets/image_placeholder.dart';
 import 'package:marvel_app/utils/nav.dart';
 
 // ignore: must_be_immutable
@@ -28,11 +28,10 @@ class CharactersCard extends StatelessWidget {
               Container(
                 width: double.infinity,
                 height: double.infinity,
-                child: FadeInImage.memoryNetwork(
-                  placeholder: kTransparentImage,
-                  image: '${_character.thumbnail.path}/landscape_large.${_character.thumbnail.extension}',
+                child: ImageMarvel(
+                  _character.thumbnail,
                   fit: BoxFit.fill,
-                  ),
+                ),
               ),
               Container(
                   width: double.infinity,

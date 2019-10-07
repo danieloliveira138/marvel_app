@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:transparent_image/transparent_image.dart';
+import 'package:marvel_app/widgets/image_placeholder.dart';
 import 'package:marvel_app/models/results.dart';
 
 // ignore: must_be_immutable
@@ -15,11 +15,10 @@ class CharactersCardGrid extends StatelessWidget {
         fit: StackFit.expand,
         alignment: Alignment.bottomLeft,
         children: <Widget>[
-          FadeInImage.memoryNetwork(
-            placeholder: kTransparentImage,
-            image: '${_character.thumbnail.path}/landscape_large.${_character.thumbnail.extension}',
+          ImageMarvel(
+            _character.thumbnail,
             fit: BoxFit.cover,
-          )
+          ),
         ],
       ),
     );

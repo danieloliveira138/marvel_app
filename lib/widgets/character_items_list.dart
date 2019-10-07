@@ -6,6 +6,7 @@ import 'package:marvel_app/modules/detail_module.dart';
 import 'package:marvel_app/screens/detail/detail_bloc.dart';
 import 'package:marvel_app/widgets/title_listtile.dart';
 
+// ignore: must_be_immutable
 class CharacterItemsList extends StatelessWidget {
   Results character;
   Function function;
