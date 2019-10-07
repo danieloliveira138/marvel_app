@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:marvel_app/models/results.dart';
 import 'package:marvel_app/modules/detail_module.dart';
+import 'package:marvel_app/screens/content/content_page.dart';
+import 'package:marvel_app/utils/nav.dart';
 import 'package:marvel_app/widgets/character_items_list.dart';
 import 'package:marvel_app/widgets/progress_view.dart';
 
@@ -59,4 +61,16 @@ class _DetailPageState extends State<DetailPage> {
           ],
         ));
   }
+
+  @override
+  void initState() {
+    DetailModule.to.bloc<DetailBloc>().content.listen((data) {
+
+      Widget contentPage = ContentPage(data);
+      nav(context, contentPage);
+
+    });
+    super.initState();
+  }
+
 }
