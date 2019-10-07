@@ -26,7 +26,7 @@ class CustomListTile extends StatelessWidget {
             ListTile(
               title: Text(items.name),
               subtitle: Text(items.resourceURI),
-              onTap: () => function,
+              onTap: () => function(),
             )
           ],
         ),
