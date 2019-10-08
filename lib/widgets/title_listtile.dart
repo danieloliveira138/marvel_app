@@ -15,7 +15,11 @@ class CustomListTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.all(16),
+              padding: EdgeInsets.only(
+                left: 16,
+                right: 16,
+                top: 16,
+                ),
               child: Text(label,
                 style: TextStyle(
                   fontSize: 24,
@@ -27,7 +31,7 @@ class CustomListTile extends StatelessWidget {
               title: Text(items.name),
               subtitle: Text(items.resourceURI),
               onTap: () => function(),
-            )
+            ),
           ],
         ),
     );

@@ -4,6 +4,7 @@ import 'package:marvel_app/models/list_label.dart';
 import 'package:marvel_app/models/results.dart';
 import 'package:marvel_app/modules/detail_module.dart';
 import 'package:marvel_app/screens/detail/detail_bloc.dart';
+import 'package:marvel_app/widgets/text_w_title.dart';
 import 'package:marvel_app/widgets/title_listtile.dart';
 
 // ignore: must_be_immutable
@@ -14,8 +15,8 @@ class CharacterItemsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     List<Items> items = List<Items>();
+
     items.addAll(character.comics.items);
     items.addAll(character.series.items);
     items.addAll(character.stories.items);
@@ -31,10 +32,19 @@ class CharacterItemsList extends StatelessWidget {
       itemBuilder: (context, index) {
 
         if(index == firstLabel.index) {
-          return CustomListTile(
-            items: items[index],
-            label: firstLabel.label,
-            function: () => func(items[index].resourceURI),
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              TextWithTitle(
+                title: 'Bio',
+                description: character.description,
+              ),
+              CustomListTile(
+                items: items[index],
+                label: firstLabel.label,
+                function: () => func(items[index].resourceURI),
+              ),
+            ],
           );
         }
 
